@@ -10,10 +10,14 @@ public class PlayerMovimentController : PhysicsObject {
 
     public float crystals = 0;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField]
+    private bool facingRight;
+
+    public int DirectionPlayer()
+    {
+        int direction = (facingRight) ? 1 : -1;
+        return direction;
+    }
 
     protected override void ComputerVelocity()
     {
@@ -32,10 +36,18 @@ public class PlayerMovimentController : PhysicsObject {
             }
         }
 
+        if (move.x > 0 && !facingRight) Flip();
+        if (move.x < 0 && facingRight) Flip();
+
         targetVelocity = move * playerConfig.maxSpeed;
 
     }
 
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        this.gameObject.transform.localScale = new Vector3(-this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {

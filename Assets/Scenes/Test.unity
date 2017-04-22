@@ -157,7 +157,8 @@ GameObject:
   m_Component:
   - component: {fileID: 357124069}
   - component: {fileID: 357124068}
-  m_Layer: 0
+  - component: {fileID: 357124070}
+  m_Layer: 2
   m_Name: nave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +218,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &357124070
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 357124067}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.16, y: 1.92}
+    newSize: {x: 0.29, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.16, y: 1.92}
+  m_EdgeRadius: 0
 --- !u!1 &886307839
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +346,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1193210977}
+  - component: {fileID: 1193210978}
   m_Layer: 9
   m_Name: ShootRef
   m_TagString: Untagged
@@ -334,12 +361,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1193210976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.102, y: -0.095, z: 0}
+  m_LocalPosition: {x: -0.423, y: -0.095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1304716050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193210978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193210976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee13bf7fd4751f4eac06b8b6e3c28d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletRef: {fileID: 114852718202316134, guid: 8497793fe78599c41a40d9d4eca0ab7b,
+    type: 2}
+  timeCooldown: 2
 --- !u!1 &1204358178
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +503,7 @@ GameObject:
   - component: {fileID: 1304716048}
   - component: {fileID: 1304716046}
   - component: {fileID: 1304716047}
+  - component: {fileID: 1304716051}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -484,6 +526,7 @@ MonoBehaviour:
   gravityModifier: 1
   playerConfig: {fileID: 11400000, guid: 4b26e23cd04e8bb4cabe64d80d0236b2, type: 2}
   crystals: 0
+  facingRight: 0
 --- !u!61 &1304716047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -583,6 +626,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304716051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1304716045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bf911e9347da04699174414109fb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myWeapon: {fileID: 1193210978}
+  myPlayer: {fileID: 0}
 --- !u!1 &1649132363
 GameObject:
   m_ObjectHideFlags: 0
