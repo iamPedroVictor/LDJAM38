@@ -48,13 +48,13 @@ public class PhysicsObject : MonoBehaviour {
     private void FixedUpdate()
     {
         //Adiciona a gravidade no movimento
-        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        velocity += gravityModifier * Physics2D.gravity * Time.fixedDeltaTime;
         velocity.x = targetVelocity.x;
 
         grounded = false;
 
         //a diferenca da posicao
-        Vector2 deltaPosition = velocity * Time.deltaTime;
+        Vector2 deltaPosition = velocity * Time.fixedDeltaTime;
 
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 

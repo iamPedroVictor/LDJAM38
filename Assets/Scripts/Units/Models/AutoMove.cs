@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class AutoMove : PhysicsObject {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public enum Direction
+    {
+        right,
+        left
+    }
+
+    public Direction directionMove;
 	
 	// Update is called once per frame
 	void Update () {
-        targetVelocity = Vector2.left;
+        if(directionMove == Direction.left)
+        {
+            targetVelocity = Vector2.left;
+        }
+        else
+        {
+            targetVelocity = Vector2.right;
+        }
 	}
 }

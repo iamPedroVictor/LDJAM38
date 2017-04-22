@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMovimentController : PhysicsObject {
 
-    public float jumpTakeOffSpeed = 7;
-    public float maxSpeed = 7;
+
+
+    public PlayerConfig playerConfig;
+
+    public float crystals = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +23,7 @@ public class PlayerMovimentController : PhysicsObject {
 
         if(Input.GetButtonDown("Jump") && grounded){
 
-            velocity.y = jumpTakeOffSpeed;
+            velocity.y = playerConfig.jumpForce;
 
         }else if(Input.GetButtonUp("Jump")){
             if(velocity.y > 0)
@@ -29,9 +32,32 @@ public class PlayerMovimentController : PhysicsObject {
             }
         }
 
-        targetVelocity = move * maxSpeed;
+        targetVelocity = move * playerConfig.maxSpeed;
 
     }
 
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Crystal")){
+            Crystal crystal = collision.GetComponent<Crystal>();
+            if(Input.GetKey(KeyCode.F)){
+                Debug.Log("Puxando");
+                crystals += crystal.Extract();
+            }
+        }
+    }
+
+    public void Die(){
+        GameManager.Instance.GameOver();
+    }
+
+    private void CheckDie()
+    {
+        if(playerConfig.health <= 0)
+        {
+            Die();
+        }
+    }
 
 }
