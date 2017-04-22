@@ -18,8 +18,10 @@ public class Crystal : MonoBehaviour {
         {
             amount = crystalConfig.amount;
             isFirstActive = false;
+
         }
         particles = GetComponent<ParticleSystem>();
+
     }
 
     public void Extract(PlayerMovimentController player){

@@ -13,7 +13,7 @@ public class PhysicsObject : MonoBehaviour {
 
     protected bool grounded;
     protected Vector2 groundNormal;
-
+    [SerializeField]
     protected Rigidbody2D rb2d;
     protected ContactFilter2D contactFilter;
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
