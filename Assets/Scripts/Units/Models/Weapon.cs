@@ -29,10 +29,13 @@ public class Weapon : MonoBehaviour {
 
     private void ShootRaycast(int direction){
         RaycastHit2D hit2D;
-        hit2D = Physics2D.Raycast(transform.position, Vector2.right * direction, 15);
-        Debug.DrawRay(transform.position, Vector2.right * direction, Color.red, 1f);
+        hit2D = Physics2D.Raycast(transform.position, Vector2.right * direction, 5);
+        
         if (hit2D.collider != null){
             Debug.Log("Acerteu algo >>> " + hit2D.collider.name);
+            Debug.DrawRay(transform.position, new Vector2(5, 0) * direction, Color.green, 1f);
+        }else{
+            Debug.DrawRay(transform.position, new Vector2(5, 0) * direction, Color.red, 1f);
         }
     }
 

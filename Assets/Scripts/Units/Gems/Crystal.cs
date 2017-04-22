@@ -8,6 +8,8 @@ public class Crystal : MonoBehaviour {
     [SerializeField]
     private bool isFirstActive = true;
 
+    public ParticleSystem particles;
+
     public float amount;
 
     private void OnEnable()
@@ -17,15 +19,23 @@ public class Crystal : MonoBehaviour {
             amount = crystalConfig.amount;
             isFirstActive = false;
         }
+        particles = GetComponent<ParticleSystem>();
     }
 
-    public float Extract(){
+    public void Extract(PlayerMovimentController player){
         float exAmount = 0f;
+        particles.Play();
         if(amount > 0f){
             exAmount = amount;
         }
         amount -= exAmount;
-        return exAmount;
+        player.AddCrystals(exAmount);
+        Invoke("DisableCrystal", 1f);
+    }
+
+    private void DisableCrystal()
+    {
+        gameObject.SetActive(false);
     }
 
 }

@@ -55,9 +55,14 @@ public class PlayerMovimentController : PhysicsObject {
             Crystal crystal = collision.GetComponent<Crystal>();
             if(Input.GetKey(KeyCode.F)){
                 Debug.Log("Puxando");
-                crystals += crystal.Extract();
+                crystal.Extract(this);
             }
         }
+    }
+
+    public void AddCrystals(float amount)
+    {
+        crystals += amount;
     }
 
     public void Die(){
