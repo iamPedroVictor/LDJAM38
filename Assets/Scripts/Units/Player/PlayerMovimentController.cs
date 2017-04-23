@@ -9,7 +9,7 @@ public class PlayerMovimentController : PhysicsObject {
 
     public PlayerConfig playerConfig;
 
-    public float crystals = 0;
+    public int crystals = 0;
     private bool cantMove = false;
 
     [SerializeField]
@@ -70,9 +70,10 @@ public class PlayerMovimentController : PhysicsObject {
         }
     }
 
-    public void AddCrystals(float amount)
+    public void AddCrystals()
     {
-        crystals += amount;
+        crystals++;
+        GameManager.Instance.CheckVitory(crystals);
     }
 
     public void CantMove(float time){

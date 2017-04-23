@@ -32,7 +32,7 @@ public class Crystal : MonoBehaviour {
         }
         amount -= exAmount;
         player.CantMove(3f);
-        player.AddCrystals(exAmount);
+        player.AddCrystals();
         Invoke("DisableCrystal", 3f);
     }
 
