@@ -13,16 +13,34 @@ public class EnemyMoviment : PhysicsObject {
     public Transform refWeapon;
     public float damage;
 
+    private bool facingRight = true;
+
     private void OnEnable()
     {
         speed = myEnemie.velocity;
         jumpForce = myEnemie.jumpForce;
     }
 
+    private bool CheckHeight()
+    {
+        bool sameLevel;
+
+        Vector2 difference = transform.position - target.position;
+        var distanceInY = Mathf.Abs(difference.y);
+        if(distanceInY > 5)
+        {
+            sameLevel = false;
+        }else{
+            sameLevel = true;
+        }
+        return sameLevel;
+    }
+
     protected override void ComputerVelocity()
     {
         Vector2 move = Vector2.zero;
-
+        if (!CheckHeight())
+            return;
         if(transform.position.x < target.position.x){
             move.x = speed;
         }else{
@@ -36,6 +54,8 @@ public class EnemyMoviment : PhysicsObject {
         {
             ShootRaycast(-1);
         }
+        if (move.x > 0 && !facingRight) Flip();
+        if (move.x < 0 && facingRight) Flip();
 
     }
 
@@ -58,6 +78,12 @@ public class EnemyMoviment : PhysicsObject {
         {
             Debug.DrawRay(transform.position, new Vector2(5, 0) * direction, Color.red, 1f);
         }
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        this.gameObject.transform.localScale = new Vector3(-this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
     }
 
 

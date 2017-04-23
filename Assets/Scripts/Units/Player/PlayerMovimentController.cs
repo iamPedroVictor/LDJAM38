@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovimentController : PhysicsObject {
 
@@ -14,6 +15,8 @@ public class PlayerMovimentController : PhysicsObject {
     [SerializeField]
     private bool facingRight;
 
+    public Text crystalText;
+
     public int DirectionPlayer()
     {
         int direction = (facingRight) ? 1 : -1;
@@ -23,6 +26,7 @@ public class PlayerMovimentController : PhysicsObject {
 
     protected override void ComputerVelocity()
     {
+        crystalText.text = "Crystals: " + crystals;
         Vector2 move = Vector2.zero;
         if (!cantMove)
         {
