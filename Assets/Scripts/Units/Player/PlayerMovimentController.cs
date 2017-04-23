@@ -65,16 +65,6 @@ public class PlayerMovimentController : PhysicsObject {
         crystals += amount;
     }
 
-    public void Die(){
-        GameManager.Instance.GameOver();
-    }
 
-    private void CheckDie()
-    {
-        if(playerConfig.health <= 0)
-        {
-            Die();
-        }
-    }
 
 }

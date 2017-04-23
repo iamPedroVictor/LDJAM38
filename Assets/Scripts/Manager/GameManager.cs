@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
 
+    private float playerPoint;
+
     public static GameManager Instance
     {
         get
@@ -17,6 +19,17 @@ public class GameManager : MonoBehaviour {
             }
             return _instance;
         }
+    }
+
+    private void Start()
+    {
+        playerPoint = 0;
+        
+    }
+
+    public void AddPoint(float value)
+    {
+        playerPoint += value;
     }
 
     public void GameOver()

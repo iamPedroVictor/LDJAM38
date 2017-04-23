@@ -21,8 +21,8 @@ public class Weapon : MonoBehaviour {
     {
         if (isCooldown)
         {
-            //ShootPrefab(direction);
-            ShootRaycast(direction);
+            ShootPrefab(direction);
+            //ShootRaycast(direction);
         }
         
     }

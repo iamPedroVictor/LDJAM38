@@ -8,13 +8,9 @@ public class Bullet : MonoBehaviour {
     public float speed;
     [SerializeField]
     private float timeToDestroy;
-
-
-
-    private void OnDisable()
-    {
-        CancelInvoke("Destroy");
-    }
+    public Vector2 forceBullet;
+    public float damage;
+    public string targetTag;
 
     public void BulletAction(int direction) { 
 
@@ -24,8 +20,28 @@ public class Bullet : MonoBehaviour {
         Invoke("Destroy", timeToDestroy);
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Tag colidida >>> " + collision.tag);
+        if (collision.CompareTag("Ground"))
+        {
+            Destroy();
+        }
+        if (collision.CompareTag(targetTag))
+        {
+            Debug.Log("Colidir com o " + targetTag);
+            Health health = collision.GetComponent<Health>();
+            health.ApplyDamage(damage);
+            Destroy();
+
+        }
+
+    }
+
     private void Destroy()
     {
+        CancelInvoke("Destroy");
         Destroy(this.gameObject);
     }
 
