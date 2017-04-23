@@ -6,7 +6,7 @@ public class Health : MonoBehaviour {
 
     public float myLife;
 
-    public void ApplyDamage(float damage)
+    public virtual void ApplyDamage(float damage)
     {
         myLife -= damage;
         CheckDie();

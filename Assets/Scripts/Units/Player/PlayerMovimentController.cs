@@ -59,7 +59,7 @@ public class PlayerMovimentController : PhysicsObject {
     {
         if (collision.CompareTag("Crystal")){
             Crystal crystal = collision.GetComponent<Crystal>();
-            if(Input.GetKey(KeyCode.F)){
+            if(Input.GetKeyDown(KeyCode.Z)){
                 Debug.Log("Puxando");
                 crystal.Extract(this);
             }
