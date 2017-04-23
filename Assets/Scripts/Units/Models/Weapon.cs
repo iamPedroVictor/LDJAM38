@@ -10,10 +10,12 @@ public class Weapon : MonoBehaviour {
 
     public float timeCooldown;
     private bool isCooldown = true;
+    public GameObject light;
 
 
     private void OnEnable()
     {
+        light.SetActive(false);
 
     }
 
@@ -41,10 +43,19 @@ public class Weapon : MonoBehaviour {
 
     private void ShootPrefab(int direction)
     {
+        StartCoroutine("LightShoot");
         Bullet bullet = Instantiate(bulletRef, transform.position, transform.rotation) as Bullet;
         bullet.BulletAction(direction);
         isCooldown = false;
         Invoke("ShootAgain", timeCooldown);
+        
+    }
+
+    private IEnumerator LightShoot()
+    {
+        light.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        light.SetActive(false);
     }
 
     private void ShootAgain()

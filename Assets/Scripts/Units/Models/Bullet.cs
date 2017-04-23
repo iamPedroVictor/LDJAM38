@@ -12,7 +12,8 @@ public class Bullet : MonoBehaviour {
     public float damage;
     public string targetTag;
 
-    public void BulletAction(int direction) { 
+
+    public void BulletAction(int direction) {
 
 
         rb2d = GetComponent<Rigidbody2D>();
@@ -20,6 +21,7 @@ public class Bullet : MonoBehaviour {
         Invoke("Destroy", timeToDestroy);
     }
 
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

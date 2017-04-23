@@ -31,8 +31,9 @@ public class Crystal : MonoBehaviour {
             exAmount = amount;
         }
         amount -= exAmount;
+        player.CantMove(3f);
         player.AddCrystals(exAmount);
-        Invoke("DisableCrystal", 1f);
+        Invoke("DisableCrystal", 3f);
     }
 
     private void DisableCrystal()

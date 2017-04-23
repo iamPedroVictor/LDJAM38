@@ -9,6 +9,7 @@ public class PlayerMovimentController : PhysicsObject {
     public PlayerConfig playerConfig;
 
     public float crystals = 0;
+    private bool cantMove = false;
 
     [SerializeField]
     private bool facingRight;
@@ -19,28 +20,33 @@ public class PlayerMovimentController : PhysicsObject {
         return direction;
     }
 
+
     protected override void ComputerVelocity()
     {
         Vector2 move = Vector2.zero;
+        if (!cantMove)
+        {
+            move.x = Input.GetAxis("Horizontal");
 
-        move.x = Input.GetAxis("Horizontal");
-
-        if(Input.GetButtonDown("Jump") && grounded){
-
-            velocity.y = playerConfig.jumpForce;
-
-        }else if(Input.GetButtonUp("Jump")){
-            if(velocity.y > 0)
+            if (Input.GetButtonDown("Jump") && grounded)
             {
-                velocity.y = velocity.y * .5f;
+
+                velocity.y = playerConfig.jumpForce;
+
             }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * .5f;
+                }
+            }
+
+            if (move.x > 0 && !facingRight) Flip();
+            if (move.x < 0 && facingRight) Flip();
+
+            targetVelocity = move * playerConfig.maxSpeed;
         }
-
-        if (move.x > 0 && !facingRight) Flip();
-        if (move.x < 0 && facingRight) Flip();
-
-        targetVelocity = move * playerConfig.maxSpeed;
-
     }
 
     private void Flip()
@@ -65,6 +71,14 @@ public class PlayerMovimentController : PhysicsObject {
         crystals += amount;
     }
 
+    public void CantMove(float time){
+        cantMove = true;
+        Invoke("CanMove", time);
+    }
 
+    private void CanMove()
+    {
+        cantMove = false;
+    }
 
 }
