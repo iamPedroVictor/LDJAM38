@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 0c1f0a3ccd8229649a2d9806fd096b74
-timeCreated: 1492975476
+guid: 57db3c7d7610596449d11359c3629f22
+timeCreated: 1492977306
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Ground_0
+  fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -35,8 +34,8 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
-  spriteExtrude: 0
+  spriteMode: 1
+  spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -44,7 +43,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
@@ -69,25 +68,8 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Ground_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    outline:
-    - - {x: -27, y: 7}
-      - {x: -27, y: -32}
-      - {x: 20, y: -32}
-      - {x: 20, y: 7}
+    sprites: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
