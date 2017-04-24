@@ -25,8 +25,11 @@ public class Weapon : MonoBehaviour {
             ShootPrefab(direction);
             //ShootRaycast(direction);
         }
-        
+
+
+
     }
+    
 
     private void ShootRaycast(int direction){
         RaycastHit2D hit2D;

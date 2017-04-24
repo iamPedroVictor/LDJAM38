@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Shoot - X\r\nCapture the crystal - Z"
+  m_Text: "Shoot - X\r\nCapture the crystal - Z\nMoviment - Arrows"
 --- !u!222 &165020489
 CanvasRenderer:
   m_ObjectHideFlags: 0
