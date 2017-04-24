@@ -7,12 +7,13 @@ public class PlayerHealth : Health {
 
     public Slider sliderLife;
     public float maxLife;
-
+    public GameObject light;
     private bool isValid;
 
     private void Start()
     {
         isValid = true;
+        light.SetActive(false);
         sliderLife.maxValue = maxLife;
         sliderLife.value = myLife;
     }
@@ -24,7 +25,15 @@ public class PlayerHealth : Health {
         base.ApplyDamage(damage);
         sliderLife.value = myLife;
         isValid = false;
+        StartCoroutine("LightDamage");
         Invoke("Validate", 2f);
+    }
+
+    private IEnumerator LightDamage()
+    {
+        light.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        light.SetActive(false);
     }
 
     private void Validate()

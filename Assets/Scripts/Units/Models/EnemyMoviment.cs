@@ -63,12 +63,12 @@ public class EnemyMoviment : PhysicsObject {
     private void ShootRaycast(int direction)
     {
         RaycastHit2D hit2D;
-        hit2D = Physics2D.Raycast(refWeapon.position, Vector2.right * direction, 1f);
+        hit2D = Physics2D.Raycast(refWeapon.position, Vector2.right * direction, 0.2f);
 
         if (hit2D.collider != null)
         {
             Debug.Log("Acerteu algo >>> " + hit2D.collider.name);
-            Debug.DrawRay(transform.position, new Vector2(5, 0) * direction, Color.green, 1f);
+            Debug.DrawRay(transform.position, new Vector2(0.2f,0) * direction, Color.green, 1f);
             if (hit2D.collider.CompareTag("Player")){
                 Health player = hit2D.collider.GetComponent<Health>();
                 player.ApplyDamage(damage);

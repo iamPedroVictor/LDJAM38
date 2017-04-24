@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
     private float playerPoint;
 
-    public Crystals[] crystals;
+    public GameObject[] crystals;
 
     public GameObject WinPanel, GameOverPanel, GamePlay;
 
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour {
     {
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        crystals = GameObject.FindObjectsOfType<Crystals>();
     }
 
     private void Start()
